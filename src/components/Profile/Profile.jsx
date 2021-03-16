@@ -1,11 +1,11 @@
-import React, {useState, useEffect} from "react";
-import {getCookie} from "../../cookie_manager";
+import React, { useState, useEffect } from "react";
+import { getCookie } from "../../cookie_manager";
 import axios from "axios";
 import './Profile.scss';
 
-const Profile = props =>{
+const Profile = props => {
 
-    if(getCookie('current_user') === null){
+    if (getCookie('current_user') === null) {
         props.history.replace('/')
     }
 
@@ -21,26 +21,26 @@ const Profile = props =>{
 
     const [editProfileDescription, setEditProfileDescription] = useState(false)
 
-    useEffect(()=>{
+    useEffect(() => {
         axios.get('')
             .then(response => {
                 setProfile(response.data.profile)
             })
-    },[])
+    }, [])
 
-    return(
+    return (
         <React.Fragment>
             <div className="profile">
-                <img src={profile.img} alt="Imagen de perfil"/>
+                <img src={profile.img} alt="Imagen de perfil" />
                 <h4>¿Quién soy?</h4>
                 {editProfileDescription
-                ?   <React.Fragment>
-                        <textarea value={profile.description} onChange={event=>setProfile({...profile, description: event.target.value})}/>
-                        <button onClick={()=>setEditProfileDescription(false)}>Guardar descripción</button>
+                    ? <React.Fragment>
+                        <textarea value={profile.description} onChange={event => setProfile({ ...profile, description: event.target.value })} />
+                        <button className="ProfileButton" onClick={() => setEditProfileDescription(false)}>Guardar descripción</button>
                     </React.Fragment>
-                :   <React.Fragment>
+                    : <React.Fragment>
                         <div>{profile.description}</div>
-                        <button onClick={()=>setEditProfileDescription(true)}>Editar descripción</button>
+                        <button className="ProfileButton" onClick={() => setEditProfileDescription(true)}>Editar descripción</button>
                     </React.Fragment>}
 
             </div>
