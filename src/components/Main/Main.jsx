@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import {getCookie} from "../../cookie_manager";
 import './Main.scss'
 import Login from "../Login/Login";
+import Register from "../Register/Register";
 
 const Main = props =>{
 
@@ -25,7 +26,8 @@ const Main = props =>{
                 }
             </header>
             { login && <Login/>}
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut nibh non tortor dignissim ultricies. Curabitur suscipit eu magna et fringilla. Suspendisse lobortis facilisis massa, rhoncus scelerisque nunc malesuada semper. Sed ut tellus sed eros convallis sagittis. Praesent lorem tellus, porta nec metus vitae, dignissim dictum nibh. Nam malesuada dapibus metus, et convallis ex consequat eu. Aenean tempus elit sed diam tincidunt sodales. Integer interdum libero nec tellus varius, ac efficitur quam facilisis. Quisque ullamcorper, sem non lobortis ornare, lectus turpis ornare urna, nec sagittis nisi nisi a est. Aenean iaculis, est in maximus porta, justo orci pharetra risus, sed dictum ipsum elit sit amet leo. Nullam non iaculis quam, id malesuada augue. Curabitur cursus id est id venenatis. Aenean tincidunt ullamcorper erat non vehicula. Donec vitae est in ipsum vestibulum suscipit ut quis ex. Nunc finibus felis lorem, ac fringilla ligula imperdiet ut. Quisque maximus ante vel ante convallis vehicula.
+            { register && <Register/>}
+            ASDSADSDSADSAd Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut nibh non tortor dignissim ultricies. Curabitur suscipit eu magna et fringilla. Suspendisse lobortis facilisis massa, rhoncus scelerisque nunc malesuada semper. Sed ut tellus sed eros convallis sagittis. Praesent lorem tellus, porta nec metus vitae, dignissim dictum nibh. Nam malesuada dapibus metus, et convallis ex consequat eu. Aenean tempus elit sed diam tincidunt sodales. Integer interdum libero nec tellus varius, ac efficitur quam facilisis. Quisque ullamcorper, sem non lobortis ornare, lectus turpis ornare urna, nec sagittis nisi nisi a est. Aenean iaculis, est in maximus porta, justo orci pharetra risus, sed dictum ipsum elit sit amet leo. Nullam non iaculis quam, id malesuada augue. Curabitur cursus id est id venenatis. Aenean tincidunt ullamcorper erat non vehicula. Donec vitae est in ipsum vestibulum suscipit ut quis ex. Nunc finibus felis lorem, ac fringilla ligula imperdiet ut. Quisque maximus ante vel ante convallis vehicula.
 
             Nulla facilisi. Nullam molestie fringilla tristique. Donec augue sapien, mattis id mauris et, elementum sodales erat. Aenean bibendum efficitur lectus sed mattis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce consectetur sem vel risus vulputate, sed auctor neque rutrum. Donec dictum et felis id euismod. Morbi pretium eget magna lacinia viverra. Donec gravida id diam ac gravida. Praesent ut lorem quis magna finibus tempor. Cras id convallis mi. Curabitur ac lectus consectetur, tempor metus id, aliquam libero. Nulla interdum ipsum nibh, sed egestas felis tincidunt ut. Etiam eu faucibus tortor. Proin pharetra leo et dui malesuada, nec consectetur ex convallis. Duis dictum vitae leo id tincidunt.
 
