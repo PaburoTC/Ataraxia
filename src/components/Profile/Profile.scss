@@ -1,0 +1,21 @@
+.profile{
+  margin: 50px;
+  display: flex;
+  flex-direction: column;
+  width: 450px;
+
+  text-align: center;
+
+  img{
+    width: 450px;
+    height: 450px;
+  }
+  textarea{
+    resize: unset;
+  }
+  div, textarea, h4{
+    margin: 20px;
+  }
+
+
+}
