@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getCookie } from "../../cookie_manager";
 import axios from "axios";
+import Project from "./Project/Project";
 import './Profile.scss';
 
 const Profile = props => {
@@ -19,6 +20,16 @@ const Profile = props => {
         }
     )
 
+    const [addProject, setAddProject] = useState({})
+
+    const [projects, setProjects] = useState([
+        {
+            name:'Burgoneta',
+            description:'BREMEN LUL',
+            link:'',
+            likes: 100
+        }
+        ])
     const [editProfileDescription, setEditProfileDescription] = useState(false)
 
     useEffect(() => {
@@ -29,8 +40,8 @@ const Profile = props => {
     }, [])
 
     return (
-        <React.Fragment>
-            <div className="profile">
+        <div className="profile">
+            <div className="profile-description">
                 <img src={profile.img} alt="Imagen de perfil" />
                 <h4>¿Quién soy?</h4>
                 {editProfileDescription
@@ -45,9 +56,20 @@ const Profile = props => {
 
             </div>
             <div className="profile-projects">
+                <h4>¡Añade tu último proyecto!</h4>
+                <form className="profile-projects-add">
+                    <label>Nombre</label>
+                    <input type="text" value={addProject.name} onChange={event => setAddProject({...addProject, name:event.target.value})}/>
 
+                    <labe>Descripción</labe>
+                    <textarea value={addProject.description} onChange={event => setAddProject({...addProject, descripcion:event.target.value})}/>
+                    
+                    <label>Link</label>
+                    <input type="text" value={addProject.link} onChange={event => setAddProject({...addProject, link:event.target.value})}/>
+                </form>
+                {projects.map(project =><Project name={project.name} description={project.description} likes={project.likes}/>)}
             </div>
-        </React.Fragment>
+        </div>
     )
 }
 

@@ -84,7 +84,6 @@ const Login = props =>{
                     onFailure={response => console.log('FAILURE: ', response.profileObj)}
                     cookiePolicy={'single_host_origin'}
                 />
-                <button type="submit" onClick={()=>props.history.push('/Register')}>Registrarse</button>
             </form>
         </React.Fragment>
     )

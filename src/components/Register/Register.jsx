@@ -7,9 +7,6 @@ import Green from './img/green.png'
 import Red from './img/red.png'
 
 const Register = props => {
-    if(getCookie('current_user') !== null){
-        props.history.replace('/')
-    }
 
     const didMountUsernameRef = useRef(false)
     const didMountEmailRef = useRef(false)
@@ -182,8 +179,6 @@ const Register = props => {
                 </div>
                 <div className="form-error">{formError}</div>
                 <button type="submit">Registrarse</button>
-                <div>¿Ya tienes cuenta?</div>
-                <button type="submit" onClick={()=>props.history.push('/Login')}>Iniciar sesión</button>
             </form>
         </React.Fragment>
     )

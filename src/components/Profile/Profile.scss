@@ -1,4 +1,18 @@
 .profile{
+  display: flex;
+  flex-direction: row;
+}
+
+.profile-projects{
+  margin: 20px;
+
+  form{
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.profile-description{
   margin: 50px;
   display: flex;
   flex-direction: column;
@@ -38,6 +52,4 @@
     background-color:#F2A359;
     color:black;
   }
-
-
 }
