@@ -30,9 +30,12 @@ const Profile = props => {
 
     return (
         <React.Fragment>
+
+
             <div className="profile">
+                <h1>MI PERFIL</h1>
                 <img src={profile.img} alt="Imagen de perfil" />
-                <h4>¿Quién soy?</h4>
+                <h4 className="ProfileHeaders" >¿Quién soy?</h4>
                 {editProfileDescription
                     ? <React.Fragment>
                         <textarea value={profile.description} onChange={event => setProfile({ ...profile, description: event.target.value })} />
