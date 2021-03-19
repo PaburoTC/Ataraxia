@@ -20,7 +20,7 @@ jobs:
           key: ${{secrets.SERVER_SSH_SK}}
           port: ${{secrets.SERVER_PORT}}
           script: |
-            cd Jobot
+            cd Ataraxia
             git pull origin master
             git status
             npm install
