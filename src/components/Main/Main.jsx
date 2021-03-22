@@ -3,7 +3,7 @@ import './Main.scss'
 import Login from "../Login/Login";
 import Register from "../Register/Register";
 import {connect} from "react-redux";
-import Ola from './img/ola.png';
+import Ola from './img/ola.webp';
 
 const Main = props =>{
 
