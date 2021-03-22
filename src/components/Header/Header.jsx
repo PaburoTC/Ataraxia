@@ -1,8 +1,8 @@
 import React from "react";
 import './Header.scss';
 import {connect} from "react-redux";
-import Logo from "./img/ataraxia_2.svg";
-import Name from "./img/ataraxia.svg";
+import Logo from "./img/logo.svg";
+import Name from "./img/name.svg";
 
 const Header = () =>{
 
