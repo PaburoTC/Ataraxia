@@ -16,24 +16,24 @@ const Header = props =>{
 
 
     return(
-        <header>
-            <div>
-                <img id="logo" src={Logo} alt="Logo"/>
-                <img id="name" src={Name} alt="Name"/>
-            </div>
 
-            <div>
-                {current_user === null
-                    ?   <React.Fragment>
-                        <span onClick={()=>props.logInPopup()}>Inicia sesión</span>
-                        <span onClick={()=>props.registerPopup()}>Regístrate</span>
-                    </React.Fragment>
-                    :   <NavLink to="/profile">
-                        <span>Perfil</span>
-                    </NavLink>
-                }
-            </div>
-        </header>
+            <header>
+                <div>
+                    <img id="logo" src={Logo} alt="Logo"/>
+                    <img id="name" src={Name} alt="Name"/>
+                </div>
+
+                <div>
+                    <span>Historia</span>
+                    <span>Contacto</span>
+                    <span>Proyectos</span>
+                    <div id="header-menu">
+                        <div/>
+                        <div/>
+                        <div/>
+                    </div>
+                </div>
+            </header>
     )
 }
 

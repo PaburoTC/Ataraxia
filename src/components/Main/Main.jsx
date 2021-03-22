@@ -1,23 +1,26 @@
-import React, {useState} from "react";
+import React from "react";
 import {getCookie} from "../../cookie_manager";
 import './Main.scss'
 import Login from "../Login/Login";
 import Register from "../Register/Register";
-import {NavLink} from "react-router-dom";
 import {connect} from "react-redux";
+import Ola from './img/ola.png';
 
 const Main = props =>{
-
-    const current_user = getCookie('current_user');
 
 
     return(
         <React.Fragment>
             { props.state.logIn    && <Login/>}
             { props.state.register && <Register/>}
-            <p>
-                Somos Ataraxia
-            </p>
+            <div id="main">
+                <section>
+                    <h1>Ataraxia</h1>
+                    <h2>talento joven con <span>futuro</span></h2>
+                    <p>Apuesta por <span>ti</span>, apuesta por el <span>planeta</span></p>
+                </section>
+            </div>
+            <img id="ola" src={Ola} alt="Ola"/>
         </React.Fragment>
     )
 }

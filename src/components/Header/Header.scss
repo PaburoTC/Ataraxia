@@ -2,11 +2,10 @@
 
 header{
   background-color: $color1;
-  color: white;
   height: 75px;
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
 
   #logo{
@@ -15,19 +14,34 @@ header{
     margin: 10px 10px 10px 20px;
   }
 
-  #name{
-    margin: 5px 0 0 0;
-  }
-
-  div{
+  > div{
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin: 0 40px 0 0;
+  }
+
+  #header-menu{
+    display: flex;
+    flex-direction: column;
+
+    div{
+      background-color: white;
+      margin: 3px;
+      width: 40px;
+      height: 5px;
+      border-radius: 3px;
+    }
+  }
+
+  #header-menu:hover div{
+    background-color: black;
+    color: black;
   }
 
   span{
     all: unset;
-    margin: 20px;
+    margin: 0 40px 0 0;
     font-size: 20px;
   }
 }
