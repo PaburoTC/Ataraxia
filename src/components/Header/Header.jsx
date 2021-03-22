@@ -1,8 +1,10 @@
 import React, {useState} from "react";
 import {NavLink} from "react-router-dom";
-import '../Main/Main.scss';
+import './Header.scss';
 import {getCookie} from "../../cookie_manager";
 import {connect} from "react-redux";
+import Logo from "./img/ataraxia_2.svg";
+import Name from "./img/ataraxia.svg";
 
 const Header = props =>{
 
@@ -15,15 +17,22 @@ const Header = props =>{
 
     return(
         <header>
-            {current_user === null
-                ?   <React.Fragment>
-                            <span onClick={()=>props.logInPopup()}>Inicia sesión</span>
-                    <span onClick={()=>props.registerPopup()}>Regístrate</span>
-                </React.Fragment>
-                :   <NavLink to="/profile">
-                    <span>Perfil</span>
-                </NavLink>
-            }
+            <div>
+                <img id="logo" src={Logo} alt="Logo"/>
+                <img id="name" src={Name} alt="Name"/>
+            </div>
+
+            <div>
+                {current_user === null
+                    ?   <React.Fragment>
+                        <span onClick={()=>props.logInPopup()}>Inicia sesión</span>
+                        <span onClick={()=>props.registerPopup()}>Regístrate</span>
+                    </React.Fragment>
+                    :   <NavLink to="/profile">
+                        <span>Perfil</span>
+                    </NavLink>
+                }
+            </div>
         </header>
     )
 }
