@@ -1,5 +1,4 @@
 import React from "react";
-import {getCookie} from "../../cookie_manager";
 import './Main.scss'
 import Login from "../Login/Login";
 import Register from "../Register/Register";
@@ -28,11 +27,6 @@ const Main = props =>{
 //LEER EL ESTADO
 const mapStateToProps = state => ({state:state})
 
-//ESCRIBIR EN EL ESTADO
-const mapDispatchToProps = (dispatch) => ({
-
-})
-
-const connectedApp = connect(mapStateToProps,mapDispatchToProps)(Main);
+const connectedApp = connect(mapStateToProps,()=>{})(Main);
 
 export default connectedApp;
