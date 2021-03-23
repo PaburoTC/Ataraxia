@@ -27,6 +27,6 @@ const Main = props =>{
 //LEER EL ESTADO
 const mapStateToProps = state => ({state:state})
 
-const connectedApp = connect(mapStateToProps,()=>{})(Main);
+const connectedApp = connect(mapStateToProps,()=>{return{}})(Main);
 
 export default connectedApp;

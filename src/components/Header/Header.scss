@@ -1,12 +1,53 @@
 @import "src/colors.scss";
 
 header{
+  position: fixed;
+  width: 100%;
+  top:0;
+  left: 0;
+
   background-color: $color1;
   height: 75px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
+
+
+  #header-menu{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: $color1;
+
+    height: 70px;
+
+    > div{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin: 0 40px 0 0;
+    }
+  }
+
+  #header-dropdown{
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+    height: 30px;
+
+    transition: 0.5s;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    border: black 5px solid;
+
+    margin: 0 0 0 0;
+    span{margin: 0 20px 0 20px;}
+  }
+
+  .header-dropdown-active{top: 70px;}
+  .header-dropdown-inactive{top:30px;}
 
   #logo{
     width: 50px;
@@ -14,14 +55,9 @@ header{
     margin: 10px 10px 10px 20px;
   }
 
-  > div{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin: 0 40px 0 0;
-  }
 
-  #header-menu{
+
+  #header-dropdown-button{
     display: flex;
     flex-direction: column;
 
@@ -34,7 +70,7 @@ header{
     }
   }
 
-  #header-menu:hover div{
+  #header-dropdown-button:hover div{
     background-color: black;
     color: black;
   }

@@ -4,42 +4,41 @@ import {connect} from "react-redux";
 import Logo from "./img/logo.svg";
 import Name from "./img/name.svg";
 
-const Header = () =>{
+const Header = props =>{
 
     return(
             <header>
-                <div>
-                    <img id="logo" src={Logo} alt="Logo"/>
-                    <img id="name" src={Name} alt="Name"/>
-                </div>
-
-                <div>
-                    <span>Historia</span>
-                    <span>Contacto</span>
-                    <span>Proyectos</span>
-                    <div id="header-menu">
-                        <div/>
-                        <div/>
-                        <div/>
+                <div id="header-menu">
+                    <div>
+                        <img id="logo" src={Logo} alt="Logo"/>
+                        <img id="name" src={Name} alt="Name"/>
                     </div>
+                    <div>
+                        <span>Historia</span>
+                        <span>Contacto</span>
+                        <span>Proyectos</span>
+                        <div id="header-dropdown-button" onClick={()=>props.headerDropdown()}>
+                            <div/>
+                            <div/>
+                            <div/>
+                        </div>
+                    </div>
+                </div>
+                <div className={props.state.headerDropdown ? 'header-dropdown-active':'header-dropdown-inactive'} id="header-dropdown">
+                    <span>1</span>
+                    <span>2</span>
+                    <span>3</span>
                 </div>
             </header>
     )
 }
 
-//LEER EL ESTADO
 const mapStateToProps = state => ({state:state})
 
-//ESCRIBIR EN EL ESTADO
 const mapDispatchToProps = (dispatch) => ({
-    logInPopup: ()=>{
+    headerDropdown: ()=>{
         dispatch({
-            type: 'LOGIN_POPUP'
-        })
-    },
-    registerPopup: ()=>{
-        dispatch({
-            type: 'REGISTER_POPUP'
+            type: 'HEADER_DROPDOWN'
         })
     }
 })
