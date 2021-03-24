@@ -1,6 +1,7 @@
 const initialState = {
     logIn: false,
-    register: false
+    register: false,
+    headerDropdown: false,
 }
 
 function reducer(state = initialState, action) {
@@ -16,6 +17,11 @@ function reducer(state = initialState, action) {
                 ...state,
                 logIn: false,
                 register: !state.register
+            }
+        case 'HEADER_DROPDOWN':
+            return {
+                ...state,
+                headerDropdown: !state.headerDropdown
             }
         default:
             return state;
