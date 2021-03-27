@@ -10,17 +10,16 @@ import Tablet from './img/tablet.webp';
 
 const Main = props =>{
 
-
     return(
         <React.Fragment>
             { props.state.logIn    && <Login/>}
             { props.state.register && <Register/>}
+            <div id="greenBackground"/>
             <div id="main">
                 <section id="main-intro">
-                    <h1>Ataraxia</h1>
-                    <h2>talento joven con <span>futuro</span></h2>
+                    <h2>Talento joven con <span>futuro</span></h2>
                     <p>Apuesta por <span>ti</span>, apuesta por el <span>planeta</span></p>
-                    <button>¡Empezar ya!</button>
+                    <button onClick={props.loginPopup}>¡Empezar ya!</button>
                 </section>
                 <img id="main-ola" src={Ola} alt="Ola"/>
                 <img id="main-tablet" src={Tablet} alt="Tablet"/>
@@ -37,15 +36,27 @@ const Main = props =>{
                     </div>
                     <div/>
                 </section>
+                <section id="main-values">
+                    <article>
+                        <h3>¿Que queremos promover?</h3>
+                        <p>A través de Ataraxia, impulsamos a jóvenes con ilusiones...</p>
+                    </article>
+                </section>
             </div>
-
         </React.Fragment>
     )
 }
 
-//LEER EL ESTADO
 const mapStateToProps = state => ({state:state})
 
-const connectedApp = connect(mapStateToProps,()=>{return{}})(Main);
+const mapDispatchToProps = (dispatch) => ({
+    loginPopup: ()=>{
+        dispatch({
+            type: 'LOGIN_POPUP'
+        })
+    }
+})
+
+const connectedApp = connect(mapStateToProps,mapDispatchToProps)(Main);
 
 export default connectedApp;

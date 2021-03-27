@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import './Header.scss';
 import {connect} from "react-redux";
 import Logo from "./img/logo.svg";
@@ -6,9 +6,13 @@ import Name from "./img/name.svg";
 
 const Header = props =>{
 
+    useEffect(()=>{
+        window.addEventListener('scroll', props.headerScroll)
+    }, [])
+
     return(
             <header>
-                <div id="header-menu">
+                <div id="header-menu" className={props.state.headerScroll ? 'header-scroll':'header-normal'}>
                     <div>
                         <img id="logo" src={Logo} alt="Logo"/>
                         <img id="name" src={Name} alt="Name"/>
@@ -39,6 +43,12 @@ const mapDispatchToProps = (dispatch) => ({
     headerDropdown: ()=>{
         dispatch({
             type: 'HEADER_DROPDOWN'
+        })
+    },
+    headerScroll: ()=>{
+        dispatch({
+            type: 'HEADER_SCROLL',
+            payload: window.pageYOffset >= window.innerHeight * 0.9
         })
     }
 })

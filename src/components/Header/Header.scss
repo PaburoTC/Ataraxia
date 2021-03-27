@@ -1,21 +1,42 @@
 @import "src/colors.scss";
 
+.header-normal{
+  color: white;
+  background-color: $color1;
+  transition: 0.5s;
+
+  #header-dropdown-button{
+    div{
+      background-color: white;
+    }
+  }
+}
+
+.header-scroll{
+  color: $color1;
+  background-color: white;
+  transition: 0.5s;
+
+  #header-dropdown-button{
+    div{
+      background-color: $color1;
+    }
+  }
+}
+
 header{
   position: fixed;
   width: 100%;
   top:0;
   left: 0;
 
-  background-color: $color1;
   height: 75px;
-
 
   #header-menu{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    background-color: $color1;
 
     height: 70px;
 
@@ -55,7 +76,10 @@ header{
     margin: 10px 10px 10px 20px;
   }
 
-
+  #name{
+    width: 120px;
+    margin: 20px 0 10px 15px;
+  }
 
   #header-dropdown-button{
     display: flex;

@@ -2,6 +2,7 @@ const initialState = {
     logIn: false,
     register: false,
     headerDropdown: false,
+    headerScroll: false
 }
 
 function reducer(state = initialState, action) {
@@ -22,6 +23,11 @@ function reducer(state = initialState, action) {
             return {
                 ...state,
                 headerDropdown: !state.headerDropdown
+            }
+        case 'HEADER_SCROLL':
+            return {
+                ...state,
+                headerScroll: action.payload
             }
         default:
             return state;
