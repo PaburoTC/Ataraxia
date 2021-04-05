@@ -3,6 +3,7 @@ import './Login.scss'
 import axios from "axios";
 import {setCookie, getCookie} from "../../cookie_manager";
 import {GoogleLogin} from 'react-google-login';
+import {connect} from "react-redux";
 
 axios.defaults.xsrfHeaderName = 'X-CSRFToken';
 axios.defaults.xsrfCookieName = "csrftoken";
@@ -61,7 +62,6 @@ const Login = props =>{
     }
 
     return(
-        <React.Fragment>
             <form className="login-form" onSubmit={handleSubmit}>
                 <br/>
                 <div className="login-form-input">
@@ -85,8 +85,24 @@ const Login = props =>{
                     cookiePolicy={'single_host_origin'}
                 />
             </form>
-        </React.Fragment>
     )
 }
 
-export default Login;
+const mapStateToProps = state => ({state:state})
+
+const mapDispatchToProps = (dispatch) => ({
+    AuthPopups: (login, register)=>{
+        dispatch({
+            type: 'AUTH_POPUP',
+            payload: {
+                logIn: login,
+                register: register
+            }
+        })
+    }
+})
+
+const connectedApp = connect(mapStateToProps,mapDispatchToProps)(Login);
+
+export default connectedApp;
+

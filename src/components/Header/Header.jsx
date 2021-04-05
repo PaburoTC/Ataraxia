@@ -1,8 +1,11 @@
 import React, {useEffect} from "react";
+import {Link, animateScroll as scroll} from 'react-scroll';
 import './Header.scss';
 import {connect} from "react-redux";
-import Logo from "./img/logo.svg";
-import Name from "./img/name.svg";
+import LogoWhite from "./img/logo_white.svg";
+import LogoGreen from "./img/logo_green.svg";
+import NameWhite from "./img/name_white.svg";
+import NameGreen from "./img/name_green.svg";
 
 const Header = props =>{
 
@@ -13,14 +16,18 @@ const Header = props =>{
     return(
             <header>
                 <div id="header-menu" className={props.state.headerScroll ? 'header-scroll':'header-normal'}>
-                    <div>
-                        <img id="logo" src={Logo} alt="Logo"/>
-                        <img id="name" src={Name} alt="Name"/>
+                    <div onClick={()=> scroll.scrollToTop()}>
+                        <img id="logo" src={props.state.headerScroll ?  LogoGreen:LogoWhite} alt="Logo"/>
+                        <img id="name" src={props.state.headerScroll ?  NameGreen:NameWhite} alt="Name"/>
                     </div>
                     <div>
-                        <span>Historia</span>
-                        <span>Contacto</span>
-                        <span>Proyectos</span>
+                        <Link>Historia</Link>
+                        <Link>Contacto</Link>
+                        <Link
+                            to="main-values"
+                            smooth={true}
+                            duration={500}
+                        >Proyectos</Link>
                         <div id="header-dropdown-button" onClick={()=>props.headerDropdown()}>
                             <div/>
                             <div/>

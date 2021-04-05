@@ -14,12 +14,19 @@ const Main = props =>{
         <React.Fragment>
             { props.state.logIn    && <Login/>}
             { props.state.register && <Register/>}
+            { (props.state.logIn || props.state.register) &&
+                <div id="login-background"
+                    onClick={()=>props.AuthPopups(false,false)}
+                />
+            }
             <div id="greenBackground"/>
             <div id="main">
                 <section id="main-intro">
                     <h2>Talento joven con <span>futuro</span></h2>
                     <p>Apuesta por <span>ti</span>, apuesta por el <span>planeta</span></p>
-                    <button onClick={props.loginPopup}>¡Empezar ya!</button>
+                    <button
+                        onClick={()=>props.AuthPopups(!props.state.logIn, props.state.register)}
+                    >¡Empezar ya!</button>
                 </section>
                 <img id="main-ola" src={Ola} alt="Ola"/>
                 <img id="main-tablet" src={Tablet} alt="Tablet"/>
@@ -36,13 +43,13 @@ const Main = props =>{
                     </div>
                     <div/>
                 </section>
-                <section id="main-values">
-                    <article>
-                        <h3>¿Que queremos promover?</h3>
-                        <p>A través de Ataraxia, impulsamos a jóvenes con ilusiones...</p>
-                    </article>
-                </section>
             </div>
+            <section id="main-values">
+                <article>
+                    <h3>¿Que queremos promover?</h3>
+                    <p>A través de Ataraxia, impulsamos a jóvenes con ilusiones...</p>
+                </article>
+            </section>
         </React.Fragment>
     )
 }
@@ -50,9 +57,13 @@ const Main = props =>{
 const mapStateToProps = state => ({state:state})
 
 const mapDispatchToProps = (dispatch) => ({
-    loginPopup: ()=>{
+    AuthPopups: (login, register)=>{
         dispatch({
-            type: 'LOGIN_POPUP'
+            type: 'AUTH_POPUP',
+            payload: {
+                logIn: login,
+                register: register
+            }
         })
     }
 })

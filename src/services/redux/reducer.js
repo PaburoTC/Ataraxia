@@ -7,17 +7,11 @@ const initialState = {
 
 function reducer(state = initialState, action) {
     switch (action.type) {
-        case 'LOGIN_POPUP':
+        case 'AUTH_POPUP':
             return {
                 ...state,
-                logIn: !state.logIn,
-                register: false
-            }
-        case 'REGISTER_POPUP':
-            return {
-                ...state,
-                logIn: false,
-                register: !state.register
+                logIn: action.payload.logIn,
+                register: action.payload.register
             }
         case 'HEADER_DROPDOWN':
             return {

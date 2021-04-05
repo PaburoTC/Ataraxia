@@ -64,7 +64,7 @@ header{
     border: black 5px solid;
 
     margin: 0 0 0 0;
-    span{margin: 0 20px 0 20px;}
+    a{margin: 0 20px 0 20px;}
   }
 
   .header-dropdown-active{top: 70px;}
@@ -99,7 +99,7 @@ header{
     color: black;
   }
 
-  span{
+  a{
     all: unset;
     margin: 0 40px 0 0;
     font-size: 20px;
