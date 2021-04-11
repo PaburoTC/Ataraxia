@@ -1,13 +1,12 @@
 import React, {useState} from "react";
 import './Login.scss'
 import axios from "axios";
-import {setCookie, getCookie} from "../../cookie_manager";
+import {setCookie, getCookie} from "../../../cookie_manager";
 import {GoogleLogin} from 'react-google-login';
 import {connect} from "react-redux";
 
 axios.defaults.xsrfHeaderName = 'X-CSRFToken';
 axios.defaults.xsrfCookieName = "csrftoken";
-//axios.defaults.withCredentials = true;
 
 
 const Login = props =>{
@@ -22,7 +21,7 @@ const Login = props =>{
         event.preventDefault();
         setFormError('');
 
-        axios.post('https://jobot.es/api/auth/login',
+        axios.post('https://ataraxia.live/api/auth/login',
             {
                 username: email,
                 email: email,
@@ -84,6 +83,9 @@ const Login = props =>{
                     onFailure={response => console.log('FAILURE: ', response.profileObj)}
                     cookiePolicy={'single_host_origin'}
                 />
+                <button
+                    onClick={()=>props.AuthPopups(false, true)}
+                >Registrarse</button>
             </form>
     )
 }

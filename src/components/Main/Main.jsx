@@ -1,7 +1,6 @@
 import React from "react";
 import './Main.scss'
-import Login from "../Login/Login";
-import Register from "../Register/Register";
+import Authentication from "../Authentication/Authentication";
 import {connect} from "react-redux";
 import Ola from './img/ola.webp';
 import Insta from './img/Insta.svg';
@@ -12,13 +11,7 @@ const Main = props =>{
 
     return(
         <React.Fragment>
-            { props.state.logIn    && <Login/>}
-            { props.state.register && <Register/>}
-            { (props.state.logIn || props.state.register) &&
-                <div id="login-background"
-                    onClick={()=>props.AuthPopups(false,false)}
-                />
-            }
+            <Authentication/>
             <div id="greenBackground"/>
             <div id="main">
                 <section id="main-intro">

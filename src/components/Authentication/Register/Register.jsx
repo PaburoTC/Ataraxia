@@ -1,10 +1,11 @@
 import React, {useState, useEffect, useRef} from 'react';
 import axios from "axios";
-import  {getCookie, setCookie} from '../../cookie_manager.js'
+import  {getCookie, setCookie} from '../../../cookie_manager.js'
 
 import './Register.scss';
 import Green from './img/green.png'
 import Red from './img/red.png'
+import {connect} from "react-redux";
 
 const Register = props => {
 
@@ -30,21 +31,17 @@ const Register = props => {
     const [formError, setFormError]               = useState('');
 
 
-    /***
-     * Username
-     */
-    useEffect(()=>{
-        setUsernameValid('')
-        if(didMountUsernameRef.current){
-            if(username ===''){
-                setUsernameError('Campo obligatorio')
-                setUsernameValid(Red)
 
-            }else if(!usernameValidator.test(username)){
-                setUsernameError('Solo letras y números')
-                setUsernameValid(Red)
-            }else{
-                axios.get(`https://jobot.es/api/auth/user/${username}`)
+    const validateUsername = ()=>{
+        setUsernameValid('')
+        if(username ===''){
+            setUsernameError('Campo obligatorio')
+            setUsernameValid(Red)
+        }else if(!usernameValidator.test(username)){
+            setUsernameError('Solo letras y números')
+            setUsernameValid(Red)
+        }else{
+            axios.get(`https://jobot.es/api/auth/user/${username}`)
                 .then(response => {
                     if(response.data.exists){
                         setUsernameError('Nombre de Usuario no disponible')
@@ -54,10 +51,13 @@ const Register = props => {
                         setUsernameValid(Green)
                     }
                 });
-            }
-        }else {
-            didMountUsernameRef.current = true;
         }
+    }
+    /***
+     * Username
+     */
+    useEffect(()=>{
+
     }, [username, usernameValidator])
 
 
@@ -156,7 +156,10 @@ const Register = props => {
                 <div className="register-form-input">
                     <label>Usuario</label>
                     <div>
-                        <input type="text" value={username} onChange={event => setUsername(event.target.value)}/>
+                        <input type="text" value={username} onChange={event => {
+                            setUsername(event.target.value);
+                            validateUsername();
+                        }}/>
                         <img src={usernameValid} alt="" width="25"/>
                     </div>
                     <div className="form-error">{usernameError}</div>
@@ -179,9 +182,29 @@ const Register = props => {
                 </div>
                 <div className="form-error">{formError}</div>
                 <button type="submit">Registrarse</button>
+                <div>¿Ya tienes cuenta?</div>
+                <button
+                    onClick={()=>props.AuthPopups(true,false)}
+                >Iniciar sesión</button>
             </form>
         </React.Fragment>
     )
 }
 
-export default Register;
+const mapStateToProps = state => ({state:state})
+
+const mapDispatchToProps = (dispatch) => ({
+    AuthPopups: (login, register)=>{
+        dispatch({
+            type: 'AUTH_POPUP',
+            payload: {
+                logIn: login,
+                register: register
+            }
+        })
+    }
+})
+
+const connectedApp = connect(mapStateToProps,mapDispatchToProps)(Register);
+
+export default connectedApp;

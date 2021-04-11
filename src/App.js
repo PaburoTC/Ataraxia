@@ -3,9 +3,16 @@ import Header from "./components/Header/Header";
 import {BrowserRouter, Switch, Route} from 'react-router-dom'
 import Profile from "./components/Profile/Profile";
 import Main from "./components/Main/Main";
-import {connect} from "react-redux";
+import axios from "axios";
 
 function App() {
+    const setCsrf = async () => {
+        console.log('GETTING CSRF TOKEN')
+        await axios.get('https://ataraxia.live/api/auth/set-csrf-cookie');
+    }
+
+    setCsrf()
+
     return (
       <BrowserRouter>
         <Header/>

@@ -21,7 +21,8 @@ jobs:
           port: ${{secrets.SERVER_PORT}}
           script: |
             cd Ataraxia
-            git pull origin master
+            git fetch --all
+            git reset --hard origin/master
             git status
             npm install
             npm run build

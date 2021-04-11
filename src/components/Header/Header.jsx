@@ -2,6 +2,8 @@ import React, {useEffect} from "react";
 import {Link, animateScroll as scroll} from 'react-scroll';
 import './Header.scss';
 import {connect} from "react-redux";
+import {NavLink} from "react-router-dom";
+import {getCookie} from "../../cookie_manager";
 import LogoWhite from "./img/logo_white.svg";
 import LogoGreen from "./img/logo_green.svg";
 import NameWhite from "./img/name_white.svg";
@@ -21,13 +23,15 @@ const Header = props =>{
                         <img id="name" src={props.state.headerScroll ?  NameGreen:NameWhite} alt="Name"/>
                     </div>
                     <div>
-                        <Link>Historia</Link>
-                        <Link>Contacto</Link>
+                        <a>Historia</a>
+                        <a>Contacto</a>
                         <Link
                             to="main-values"
                             smooth={true}
-                            duration={500}
+                            duration={1000}
                         >Proyectos</Link>
+                        {getCookie('current_user') !== null
+                        && <NavLink to='profile'>Perfil</NavLink>}
                         <div id="header-dropdown-button" onClick={()=>props.headerDropdown()}>
                             <div/>
                             <div/>
