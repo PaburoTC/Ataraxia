@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getCookie } from "../../cookie_manager";
 import axios from "axios";
+import {nanoid} from 'nanoid';
 import Project from "./Project/Project";
 import './Profile.scss';
 
@@ -33,10 +34,12 @@ const Profile = props => {
     const [editProfileDescription, setEditProfileDescription] = useState(false)
 
     useEffect(() => {
+        /*
         axios.get('')
             .then(response => {
                 setProfile(response.data.profile)
             })
+         */
     }, [])
 
     return (
@@ -61,13 +64,13 @@ const Profile = props => {
                     <label>Nombre</label>
                     <input type="text" value={addProject.name} onChange={event => setAddProject({...addProject, name:event.target.value})}/>
 
-                    <labe>Descripción</labe>
+                    <label>Descripción</label>
                     <textarea value={addProject.description} onChange={event => setAddProject({...addProject, descripcion:event.target.value})}/>
                     
                     <label>Link</label>
                     <input type="text" value={addProject.link} onChange={event => setAddProject({...addProject, link:event.target.value})}/>
                 </form>
-                {projects.map(project =><Project name={project.name} description={project.description} likes={project.likes}/>)}
+                {projects.map(project =><Project name={project.name} description={project.description} likes={project.likes} key={nanoid()}/>)}
             </div>
         </div>
     )

@@ -34,6 +34,7 @@ const Register = props => {
 
     const validateUsername = ()=>{
         setUsernameValid('')
+        setUsernameValid('')
         if(username ===''){
             setUsernameError('Campo obligatorio')
             setUsernameValid(Red)

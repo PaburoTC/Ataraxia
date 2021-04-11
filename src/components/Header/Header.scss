@@ -4,7 +4,6 @@
   color: white;
   background-color: $color1;
   transition: 0.5s;
-
   #header-dropdown-button{
     div{
       background-color: white;
@@ -45,6 +44,13 @@ header{
       flex-direction: row;
       align-items: center;
       margin: 0 40px 0 0;
+
+      a{
+        all: unset;
+        margin: 0 40px 0 0;
+        font-size: 20px;
+        cursor: pointer;
+      }
     }
   }
 
@@ -97,11 +103,5 @@ header{
   #header-dropdown-button:hover div{
     background-color: black;
     color: black;
-  }
-
-  a{
-    all: unset;
-    margin: 0 40px 0 0;
-    font-size: 20px;
   }
 }
